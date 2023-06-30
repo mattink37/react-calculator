@@ -17,6 +17,7 @@ function App() {
         width: "100vw",
         height: "100vh",
         justifyContent: "center",
+        alignContent: "center",
       }}
     >
       <Keypad />
@@ -33,6 +34,14 @@ const Keypad = () => {
     const newFieldValue = fieldValue * 10 + number;
     setFieldValue(newFieldValue);
     updateValues(newFieldValue);
+  };
+
+  const clearValues = () => {
+    setFieldValue(0);
+    setValue1(undefined);
+    setValue2(undefined);
+    setOperator("");
+    resetOperatorColors();
   };
 
   const updateValues = (value: number) => {
@@ -88,10 +97,7 @@ const Keypad = () => {
                 <Button
                   variant="contained"
                   sx={{ width: "100%" }}
-                  onClick={() => {
-                    setFieldValue(0);
-                    updateValues(fieldValue);
-                  }}
+                  onClick={() => clearValues()}
                 >
                   C
                 </Button>
@@ -160,7 +166,6 @@ const Keypad = () => {
                 setFieldValue(result);
                 setValue1(result);
                 setValue2(undefined);
-                setOperator("");
               }}
             >
               =

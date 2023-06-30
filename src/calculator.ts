@@ -16,8 +16,11 @@ export const divide = (num1: number, num2: number): number => {
 }
 
 export const evaluate = (num1: number | undefined, num2: number | undefined, operator: string): number => {
-    if (num1 === undefined || num2 === undefined) {
-        return 0;
+    if (num1 === undefined) {
+        num1 = 0;
+    }
+    if (num2 === undefined) {
+        num2 = num1;
     }
     switch (operator) {
         case '+':
